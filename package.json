@@ -1,0 +1,7 @@
+{
+  "name": "@glonky-chess/web3-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Glonky Sailor",
+  "license": "MIT"
+}
