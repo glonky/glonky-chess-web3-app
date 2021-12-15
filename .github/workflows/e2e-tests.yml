@@ -1,0 +1,83 @@
+name: "e2e tests"
+
+on: [deployment_status]
+
+env:
+  # Force terminal colors. @see https://www.npmjs.com/package/colors
+  FORCE_COLOR: 1
+
+jobs:
+  test_linux:
+    name: ${{ matrix.os }} (${{ matrix.browser }})
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
+    if: github.event.deployment_status.state == 'success'
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: yarn install --frozen-lockfile
+      env:
+        DEBUG: pw:install
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+    - run: yarn build
+    - run: npx playwright install --with-deps ${{ matrix.browser }} chromium
+    - run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test:e2e --project=${{ matrix.browser }}
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+
+  test_mac:
+    name: ${{ matrix.os }} (${{ matrix.browser }})
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-10.15, macos-11.0]
+        browser: [chromium, firefox, webkit]
+    runs-on: ${{ matrix.os }}
+    if: github.event.deployment_status.state == 'success'
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: yarn install --frozen-lockfile
+      env:
+        DEBUG: pw:install
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+    - run: yarn build
+    - run: npx playwright install --with-deps ${{ matrix.browser }} chromium
+    - run: yarn test:e2e --project=${{ matrix.browser }}
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+
+  test_win:
+    name: "Windows"
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    runs-on: windows-latest
+    if: github.event.deployment_status.state == 'success'
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: yarn install --frozen-lockfile
+      env:
+        DEBUG: pw:install
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+    - run: yarn build
+    - run: npx playwright install --with-deps ${{ matrix.browser }} chromium
+    - run: yarn test:e2e --project=${{ matrix.browser }}
+      shell: bash
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
