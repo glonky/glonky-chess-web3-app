@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   generateBuildId: () => 'build', // This makes deploying to Netlify much faster
+  images: {
+    domains: ['images.unsplash.com', 'tailwindui.com'],
+  },
   reactStrictMode: true,
   swcMinify: true,
   webpack(config) {

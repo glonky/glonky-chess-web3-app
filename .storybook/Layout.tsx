@@ -1,13 +1,13 @@
 import React from 'react';
 import '../src/styles/globals.css';
+import { useDarkMode }from '../src/hooks/use-dark-mode';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, darkMode }) => {
+  useDarkMode({ isEnabled: darkMode });
 
   return (
-    <div className="transition duration-500 text-black dark:text-white flex flex-col min-h-screen">
-      <main className="flex-grow">
-        {children}
-      </main>
+    <div>
+      {children}
     </div>
   )
 }

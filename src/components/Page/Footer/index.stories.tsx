@@ -1,12 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { DarkModeToggle } from './index';
+import { Footer } from './index';
 
 export default {
-  component: DarkModeToggle,
-  title: 'DarkModeToggle',
+  component: Footer,
+  title: 'Page/Footer',
 } as Meta;
 
-const defaultTemplate: Story = () => <DarkModeToggle />;
+const defaultTemplate: Story = () => <Footer />;
 
 export const Default = defaultTemplate.bind({});
