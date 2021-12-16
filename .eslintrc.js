@@ -26,6 +26,7 @@ module.exports = {
     'import/order': ['error', { groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],
     'jest/expect-expect': 'error',
     'jest/no-disabled-tests': 'warn',
+    'jest/no-done-callback': 'off',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
