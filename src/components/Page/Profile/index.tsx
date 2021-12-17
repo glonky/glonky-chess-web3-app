@@ -123,7 +123,7 @@ export const Profile = (props?: ProfileProps) => {
                       deactivate();
                     }}
                   >
-                    Logout
+                    Disconnect
                   </button>
                 )}
               </Menu.Item>

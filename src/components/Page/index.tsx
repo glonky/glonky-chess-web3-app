@@ -18,7 +18,7 @@ export const Page = (props: PropsWithChildren<any>) => {
     <SidebarProvider navigationItems={navigation}>
       <div>
         <Sidebar />
-        <div className="md:pl-64 flex flex-col flex-1 transition duration-500 bg-gray-100 dark:bg-gray-800 text-black dark:text-white">
+        <div className="md:pl-64 flex flex-col flex-1 transition duration-500">
           <Header />
           <main className="flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">{props.children}</div>
