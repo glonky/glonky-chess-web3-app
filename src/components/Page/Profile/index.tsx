@@ -52,15 +52,15 @@ export const Profile = (props?: ProfileProps) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="text-white bg-white dark:bg-indigo-700 z-10 md:mx-3 origin-top-right md:origin-top absolute right-0 md:left-0 mt-2 md:mt-1 w-48 md:w-auto rounded-md shadow-lg ring-1 ring-indigo-500 divide-y divide-gray-200 dark:divide-white divide-opacity-10 focus:outline-none">
+        <Menu.Items className="text-white bg-indigo-700 z-10 md:mx-3 origin-top-right md:origin-top absolute right-0 md:left-0 mt-2 md:mt-1 w-48 md:w-auto rounded-md shadow-lg ring-1 ring-indigo-500 divide-y divide-gray-200 dark:divide-white divide-opacity-10 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   View profile
@@ -72,8 +72,8 @@ export const Profile = (props?: ProfileProps) => {
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   Settings
@@ -85,8 +85,8 @@ export const Profile = (props?: ProfileProps) => {
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   Notifications
@@ -100,8 +100,8 @@ export const Profile = (props?: ProfileProps) => {
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   Get desktop app
@@ -113,8 +113,8 @@ export const Profile = (props?: ProfileProps) => {
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   Support
@@ -128,8 +128,8 @@ export const Profile = (props?: ProfileProps) => {
                 <a
                   href="#"
                   className={classNames('block px-4 py-2 text-sm', {
-                    'bg-gray-100 text-gray-900 dark:bg-indigo-600 dark:bg-opacity-75 dark:text-white': active,
-                    'text-gray-700 dark:text-white': !active,
+                    'bg-indigo-600 bg-opacity-75 text-white': active,
+                    'text-white': !active,
                   })}
                 >
                   Logout
