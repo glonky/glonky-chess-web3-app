@@ -4,6 +4,11 @@ import { Header } from './index';
 
 export default {
   component: Header,
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone6',
+    },
+  },
   title: 'Page/Header',
 } as Meta;
 

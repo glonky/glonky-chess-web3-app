@@ -1,20 +1,16 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import Image from 'next/image';
-import { SidebarProps } from '../interface';
+import { useSidebar } from '../context';
 
-export interface SidebarMobileProps extends SidebarProps {
-  isOpen?: boolean;
-}
-
-export const SidebarMobile = (props: SidebarMobileProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(props.isOpen ?? true);
+export const SidebarMobile = () => {
+  const { isOpen, setIsOpen, navigationItems } = useSidebar();
 
   return (
-    <Transition.Root show={sidebarOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
+    <Transition.Root show={isOpen} as={Fragment}>
+      <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setIsOpen}>
         <Transition.Child
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
@@ -49,7 +45,7 @@ export const SidebarMobile = (props: SidebarMobileProps) => {
                 <button
                   type="button"
                   className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => setIsOpen(false)}
                 >
                   <span className="sr-only">Close sidebar</span>
                   <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
@@ -69,7 +65,7 @@ export const SidebarMobile = (props: SidebarMobileProps) => {
                 </div>
               </div>
               <nav className="mt-5 px-2 space-y-1">
-                {props.navigationItems.map((item) => (
+                {navigationItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -83,25 +79,6 @@ export const SidebarMobile = (props: SidebarMobileProps) => {
                   </a>
                 ))}
               </nav>
-            </div>
-            <div className="flex-shrink-0 flex border-t border-indigo-800 p-4">
-              <a href="#" className="flex-shrink-0 group block">
-                <div className="flex items-center">
-                  <div className="h-10 w-10 relative">
-                    <Image
-                      priority={true}
-                      className="rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                      layout="fill"
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-base font-medium text-white">Tom Cook</p>
-                    <p className="text-sm font-medium text-indigo-200 group-hover:text-white">View profile</p>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
         </Transition.Child>

@@ -1,13 +1,9 @@
-import Link from 'next/link';
-import { DarkModeToggle } from '../components/DarkModeToggle';
+import { Page } from '../components/Page';
 
 export default function Home() {
   return (
-    <nav>
-      <Link href="/about">
-        <a>About Page</a>
-      </Link>
-      <DarkModeToggle />
-    </nav>
+    <Page>
+      <h1>Hello Next.js</h1>
+    </Page>
   );
 }
