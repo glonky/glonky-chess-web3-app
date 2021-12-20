@@ -9,9 +9,7 @@ const Layout = ({ children, darkMode }) => {
 
   return (
     <MemoryRouterProvider>
-      <AppProviders>
-        {children}
-      </AppProviders>
+      {children}
     </MemoryRouterProvider>
   )
 }

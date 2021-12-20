@@ -9,6 +9,17 @@ module.exports = {
       use: [require.resolve('@svgr/webpack')]
     });
 
+    // This fixes an issue where storybook can't load ES6 modules
+    // https://github.com/webpack/webpack/issues/11467#issuecomment-691873586
+    config.module.rules.push({
+      test: /chessground.*\.m?js/,
+      include: /node_modules/,
+      type: "javascript/auto",
+      resolve: {
+        fullySpecified: false
+      }
+    })
+
     return config;
   },
   core: {

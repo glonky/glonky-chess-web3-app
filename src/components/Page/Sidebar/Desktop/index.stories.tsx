@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/outline';
 import { SidebarProvider, SidebarProviderProps } from '../context';
+import { Web3Provider } from '../../../../context/';
 import { SidebarDesktop } from './index';
 
 export default {
@@ -10,9 +11,11 @@ export default {
 } as Meta;
 
 const defaultTemplate: Story<SidebarProviderProps> = (props) => (
-  <SidebarProvider {...props}>
-    <SidebarDesktop />
-  </SidebarProvider>
+  <Web3Provider>
+    <SidebarProvider {...props}>
+      <SidebarDesktop />
+    </SidebarProvider>
+  </Web3Provider>
 );
 
 export const Default = defaultTemplate.bind({});

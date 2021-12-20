@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Menu } from '@headlessui/react';
+import { Web3Provider } from '../../../context/';
 import { ConnectWalletButton } from './index';
 
 export default {
@@ -10,17 +11,21 @@ export default {
 
 const connectedWalletTemplate: Story = (args) => {
   return (
-    <Menu>
-      <ConnectWalletButton {...args} />
-    </Menu>
+    <Web3Provider>
+      <Menu>
+        <ConnectWalletButton {...args} />
+      </Menu>
+    </Web3Provider>
   );
 };
 
 const disconnectedWalletTemplate: Story = (args) => {
   return (
-    <Menu>
-      <ConnectWalletButton {...args} />
-    </Menu>
+    <Web3Provider>
+      <Menu>
+        <ConnectWalletButton {...args} />
+      </Menu>
+    </Web3Provider>
   );
 };
 

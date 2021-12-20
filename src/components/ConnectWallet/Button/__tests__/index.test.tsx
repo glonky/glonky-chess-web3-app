@@ -9,7 +9,8 @@ jest.mock('@usedapp/core', () => {
   return { useEthers: mockUseEthers };
 });
 
-// NOTE: Skip tests until this discussion is resolved: https://github.com/vercel/next.js/discussions/31152
+// NOTE: Skip tests until this discussion is resolved:
+// https://github.com/vercel/next.js/discussions/31152
 describe.skip('Unit | Components | DarkModeToggle', () => {
   afterEach(() => {
     mockUseEthers.mockClear();

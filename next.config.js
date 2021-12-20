@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  generateBuildId: () => 'build', // This makes deploying to Netlify much faster
+  experimental: {
+    esmExternals: true,
+  },
+  generateBuildId: () => 'build',
   images: {
     domains: ['images.unsplash.com', 'tailwindui.com'],
   },
@@ -10,6 +13,15 @@ module.exports = {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
+    });
+
+    config.module.rules.push({
+      include: /node_modules/,
+      resolve: {
+        fullySpecified: false,
+      },
+      test: /chessground.*\.m?js/,
+      type: 'javascript/auto',
     });
 
     return config;
