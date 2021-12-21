@@ -12,7 +12,7 @@
   display: block;
 }
 
-cg-helper {
+.chessground cg-helper {
   position: absolute;
   width: 12.5%;
   padding-bottom: 12.5%;
@@ -20,7 +20,7 @@ cg-helper {
   bottom: 0;
 }
 
-cg-container {
+.chessground cg-container {
   position: absolute;
   width: 800%;
   height: 800%;
@@ -28,7 +28,7 @@ cg-container {
   bottom: 0;
 }
 
-cg-board {
+.chessground cg-board {
   position: absolute;
   top: 0;
   left: 0;
@@ -40,7 +40,7 @@ cg-board {
   cursor: pointer;
 }
 
-cg-board square {
+.chessground cg-board square {
   position: absolute;
   top: 0;
   left: 0;
@@ -49,41 +49,41 @@ cg-board square {
   pointer-events: none;
 }
 
-cg-board square.move-dest {
+.chessground cg-board square.move-dest {
   background: radial-gradient(rgb(20 85 30 / 50%) 22%, #208530 0, rgb(0 0 0 / 30%) 0, rgb(0 0 0 / 0%) 0);
   pointer-events: auto;
 }
 
-cg-board square.premove-dest {
+.chessground cg-board square.premove-dest {
   background: radial-gradient(rgb(20 30 85 / 50%) 22%, #203085 0, rgb(0 0 0 / 30%) 0, rgb(0 0 0 / 0%) 0);
 }
 
-cg-board square.oc.move-dest {
+.chessground cg-board square.oc.move-dest {
   background: radial-gradient(transparent 0%, transparent 80%, rgb(20 85 0 / 30%) 80%);
 }
 
-cg-board square.oc.premove-dest {
+.chessground cg-board square.oc.premove-dest {
   background: radial-gradient(transparent 0%, transparent 80%, rgb(20 30 85 / 20%) 80%);
 }
 
-cg-board square.move-dest:hover {
+.chessground cg-board square.move-dest:hover {
   background: rgb(20 85 30 / 30%);
 }
 
-cg-board square.premove-dest:hover {
+.chessground cg-board square.premove-dest:hover {
   background: rgb(20 30 85 / 20%);
 }
 
-cg-board square.last-move {
+.chessground cg-board square.last-move {
   will-change: transform;
   background-color: rgb(155 199 0 / 41%);
 }
 
-cg-board square.selected {
+.chessground cg-board square.selected {
   background-color: rgb(20 85 30 / 50%);
 }
 
-cg-board square.check {
+.chessground cg-board square.check {
   background:
     radial-gradient(
       ellipse at center,
@@ -94,7 +94,7 @@ cg-board square.check {
     );
 }
 
-cg-board square.current-premove {
+.chessground cg-board square.current-premove {
   background-color: rgb(20 30 85 / 50%);
 }
 
@@ -110,30 +110,30 @@ cg-board square.current-premove {
   pointer-events: none;
 }
 
-cg-board piece.dragging {
+.chessground cg-board piece.dragging {
   cursor: move;
   z-index: 10;
 }
 
-cg-board piece.anim {
+.chessground cg-board piece.anim {
   z-index: 8;
 }
 
-cg-board piece.fading {
+.chessground cg-board piece.fading {
   z-index: 1;
   opacity: 0.5;
 }
 
-.cg-wrap square.move-dest:hover {
+.chessground .cg-wrap square.move-dest:hover {
   background-color: rgb(20 85 30 / 30%);
 }
 
-.cg-wrap piece.ghost {
+.chessground .cg-wrap piece.ghost {
   opacity: 0.3;
 }
 
-.cg-wrap .cg-shapes,
-.cg-wrap .cg-custom-svgs {
+.chessground .cg-wrap .cg-shapes,
+.chessground .cg-wrap .cg-custom-svgs {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -143,17 +143,17 @@ cg-board piece.fading {
   pointer-events: none;
 }
 
-.cg-wrap .cg-shapes {
+.chessground .cg-wrap .cg-shapes {
   opacity: 0.6;
   z-index: 2;
 }
 
-.cg-wrap .cg-custom-svgs {
+.chessground .cg-wrap .cg-custom-svgs {
   /* over piece.anim = 8, but under piece.dragging = 10 */
   z-index: 9;
 }
 
-.cg-wrap coords {
+.chessground .cg-wrap coords {
   position: absolute;
   display: flex;
   pointer-events: none;
@@ -161,7 +161,7 @@ cg-board piece.fading {
   font-size: 9px;
 }
 
-.cg-wrap coords.ranks {
+.chessground .cg-wrap coords.ranks {
   right: -15px;
   top: 0;
   flex-flow: column-reverse;
@@ -169,11 +169,11 @@ cg-board piece.fading {
   width: 12px;
 }
 
-.cg-wrap coords.ranks.black {
+.chessground .cg-wrap coords.ranks.black {
   flex-flow: column;
 }
 
-.cg-wrap coords.files {
+.chessground .cg-wrap coords.files {
   bottom: -16px;
   left: 0;
   flex-flow: row;
@@ -183,14 +183,14 @@ cg-board piece.fading {
   text-align: center;
 }
 
-.cg-wrap coords.files.black {
+.chessground .cg-wrap coords.files.black {
   flex-flow: row-reverse;
 }
 
-.cg-wrap coords coord {
+.chessground .cg-wrap coords coord {
   flex: 1 1 auto;
 }
 
-.cg-wrap coords.ranks coord {
+.chessground .cg-wrap coords.ranks coord {
   transform: translateY(39%);
 }
