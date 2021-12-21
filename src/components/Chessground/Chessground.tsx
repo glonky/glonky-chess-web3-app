@@ -100,8 +100,6 @@ export const Chessground = (props?: ChessgroundProps) => {
     }
   }, [ref, chessground, props?.images]);
 
-  // console.log('chessground', chessground);
-
   function setImage(piece: keyof PieceImageMap, color: 'black' | 'white', url?: string) {
     if (ref.current && url) {
       // NOTE: this does not currently work with ghosts because it gets rendered when the user clicks on
