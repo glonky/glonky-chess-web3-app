@@ -1,12 +1,9 @@
-import classNames from 'classnames';
 import React from 'react';
 import Image from 'next/image';
 import { Profile } from '../../Profile';
-import { useSidebar } from '../context';
+import { SidebarProps } from '..';
 
-export const SidebarDesktop = () => {
-  const { navigationItems } = useSidebar();
-
+export const SidebarDesktop = (props: SidebarProps) => {
   return (
     <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       <div className="flex-1 flex flex-col min-h-0 bg-indigo-700">
@@ -24,21 +21,7 @@ export const SidebarDesktop = () => {
           <div className="mt-6 h-0 flex-1 flex flex-col">
             <Profile />
             <nav className="px-3 mt-6">
-              <div className="space-y-1">
-                {navigationItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames('group flex items-center px-2 py-2 text-sm font-medium rounded-md', {
-                      'bg-indigo-800 text-white': item.current,
-                      'text-white hover:bg-indigo-600 hover:bg-opacity-75': !item.current,
-                    })}
-                  >
-                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
+              <div className="space-y-1">{props.children}</div>
             </nav>
           </div>
         </div>

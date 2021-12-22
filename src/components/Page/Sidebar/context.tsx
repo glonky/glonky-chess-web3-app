@@ -1,14 +1,6 @@
 import React, { PropsWithChildren, useState } from 'react';
 
-export interface SidebarNavigationItem {
-  name: string;
-  href: string;
-  current: boolean;
-  icon: React.ComponentType<any>;
-}
-
 interface SidebarProps {
-  navigationItems: SidebarNavigationItem[];
   isOpen?: boolean;
 }
 
@@ -23,11 +15,7 @@ export type SidebarProviderProps = SidebarProps;
 const SidebarProvider = (props: PropsWithChildren<SidebarProviderProps>) => {
   const [isOpen, setIsOpen] = useState<boolean>(props.isOpen ?? false);
 
-  return (
-    <SidebarContext.Provider value={{ isOpen, navigationItems: props.navigationItems, setIsOpen }}>
-      {props.children}
-    </SidebarContext.Provider>
-  );
+  return <SidebarContext.Provider value={{ isOpen, setIsOpen }}>{props.children}</SidebarContext.Provider>;
 };
 
 function useSidebar() {

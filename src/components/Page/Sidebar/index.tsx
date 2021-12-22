@@ -1,11 +1,19 @@
 import { SidebarDesktop } from './Desktop';
 import { SidebarMobile } from './Mobile';
+import { SidebarLink, SidebarLinkProps } from './Link';
 
-export const Sidebar = () => {
+export interface SidebarProps {
+  children: React.ReactElement<SidebarLinkProps>[];
+}
+
+export const Sidebar = (props: SidebarProps) => {
+  const { children, ...rest } = props;
   return (
     <>
-      <SidebarMobile />
-      <SidebarDesktop />
+      <SidebarMobile {...rest}>{children}</SidebarMobile>
+      <SidebarDesktop {...rest}>{children}</SidebarDesktop>
     </>
   );
 };
+
+Sidebar.Link = SidebarLink;

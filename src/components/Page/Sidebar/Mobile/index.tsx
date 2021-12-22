@@ -1,12 +1,12 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
 import React, { Fragment } from 'react';
 import Image from 'next/image';
 import { useSidebar } from '../context';
+import { SidebarProps } from '..';
 
-export const SidebarMobile = () => {
-  const { isOpen, setIsOpen, navigationItems } = useSidebar();
+export const SidebarMobile = (props: SidebarProps) => {
+  const { isOpen, setIsOpen } = useSidebar();
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -64,21 +64,7 @@ export const SidebarMobile = () => {
                   />
                 </div>
               </div>
-              <nav className="mt-5 px-2 space-y-1">
-                {navigationItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-indigo-800 text-white' : 'text-white hover:bg-indigo-600 hover:bg-opacity-75',
-                      'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                    )}
-                  >
-                    <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
-                    {item.name}
-                  </a>
-                ))}
-              </nav>
+              <nav className="mt-5 px-2 space-y-1">{props.children}</nav>
             </div>
           </div>
         </Transition.Child>

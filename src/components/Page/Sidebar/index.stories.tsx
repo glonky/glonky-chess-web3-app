@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/outline';
+import { FolderIcon, HomeIcon, UsersIcon } from '@heroicons/react/outline';
 import { Web3Provider } from '../../../context';
 import { SidebarProvider, SidebarProviderProps } from './context';
 import { Sidebar } from './index';
@@ -13,7 +13,20 @@ export default {
 const defaultTemplate: Story<SidebarProviderProps> = (props) => (
   <Web3Provider>
     <SidebarProvider {...props}>
-      <Sidebar />
+      <Sidebar>
+        <Sidebar.Link href="/dashboard">
+          <Sidebar.Link.Icon icon={<HomeIcon />} />
+          <Sidebar.Link.Text>Dashboard</Sidebar.Link.Text>
+        </Sidebar.Link>
+        <Sidebar.Link href="/team">
+          <Sidebar.Link.Icon icon={<UsersIcon />} />
+          <Sidebar.Link.Text>Team</Sidebar.Link.Text>
+        </Sidebar.Link>
+        <Sidebar.Link href="/projects">
+          <Sidebar.Link.Icon icon={<FolderIcon />} />
+          <Sidebar.Link.Text>Projects</Sidebar.Link.Text>
+        </Sidebar.Link>
+      </Sidebar>
     </SidebarProvider>
   </Web3Provider>
 );
@@ -22,12 +35,4 @@ export const Default = defaultTemplate.bind({});
 
 Default.args = {
   isOpen: true,
-  navigationItems: [
-    { current: true, href: '#', icon: HomeIcon, name: 'Dashboard' },
-    { current: false, href: '#', icon: UsersIcon, name: 'Team' },
-    { current: false, href: '#', icon: FolderIcon, name: 'Projects' },
-    { current: false, href: '#', icon: CalendarIcon, name: 'Calendar' },
-    { current: false, href: '#', icon: InboxIcon, name: 'Documents' },
-    { current: false, href: '#', icon: ChartBarIcon, name: 'Reports' },
-  ],
 };
