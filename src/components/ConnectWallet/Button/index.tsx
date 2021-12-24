@@ -1,12 +1,13 @@
 import React from 'react';
 import { Menu } from '@headlessui/react';
 import { SelectorIcon } from '@heroicons/react/outline';
-import { useEthers } from '@usedapp/core';
+import { useEthers, shortenIfAddress } from '@usedapp/core';
 import classNames from 'classnames';
 import MetaMaskIcon from '../../../../public/images/metamask/metamask-fox.svg';
 
 export const ConnectWalletButton = () => {
   const { activateBrowserWallet, account } = useEthers();
+
   const buttonClassName =
     'md:group max-w-xs md:w-full flex items-center md:block rounded-md md:px-3.5 md:py-2 text-sm font-medium text-white bg-indigo-800 md:hover:bg-indigo-600 md:hover:bg-opacity-75 focus:outline-none focus:ring-2 ring-offset-2 ring-indigo-500 ring-offset-white ring-offset-opacity-60';
 
@@ -22,7 +23,7 @@ export const ConnectWalletButton = () => {
     );
   }
 
-  const accountIdWithEllipsis = `${account.slice(0, 6)}...${account.slice(account.length - 4, account.length)}`;
+  const accountIdWithEllipsis = shortenIfAddress(account);
 
   return (
     <Menu.Button className={classNames(buttonClassName, 'text-left')} data-testid="connect-wallet-account-id-button">

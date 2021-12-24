@@ -1,10 +1,11 @@
-import { Mainnet, DAppProvider, Config } from '@usedapp/core';
+import { Ropsten, DAppProvider, Config, Mainnet } from '@usedapp/core';
 import { PropsWithChildren } from 'react';
 
 const config: Config = {
-  readOnlyChainId: Mainnet.chainId,
+  readOnlyChainId: Ropsten.chainId,
   readOnlyUrls: {
-    [Mainnet.chainId]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
+    [Mainnet.chainId]: process.env.NEXT_PUBLIC_INFURA_MAINNET_RPC_ENDPOINT ?? '',
+    [Ropsten.chainId]: process.env.NEXT_PUBLIC_INFURA_ROPSTEN_RPC_ENDPOINT ?? '',
   },
 };
 
